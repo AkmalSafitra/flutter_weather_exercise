@@ -867,7 +867,8 @@ class _$RegisterStateTearOff {
       required Password password,
       required bool showErrorMessages,
       required bool isSubmitting,
-      required Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption}) {
+      required Option<Either<RegisterFailure, Unit>>
+          authFailureOrSuccessOption}) {
     return _RegisterState(
       firstName: firstName,
       lastName: lastName,
@@ -891,7 +892,7 @@ mixin _$RegisterState {
   Password get password => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
-  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption =>
+  Option<Either<RegisterFailure, Unit>> get authFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -911,7 +912,7 @@ abstract class $RegisterStateCopyWith<$Res> {
       Password password,
       bool showErrorMessages,
       bool isSubmitting,
-      Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption});
+      Option<Either<RegisterFailure, Unit>> authFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -961,7 +962,7 @@ class _$RegisterStateCopyWithImpl<$Res>
       authFailureOrSuccessOption: authFailureOrSuccessOption == freezed
           ? _value.authFailureOrSuccessOption
           : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthFailure, Unit>>,
+              as Option<Either<RegisterFailure, Unit>>,
     ));
   }
 }
@@ -980,7 +981,7 @@ abstract class _$RegisterStateCopyWith<$Res>
       Password password,
       bool showErrorMessages,
       bool isSubmitting,
-      Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption});
+      Option<Either<RegisterFailure, Unit>> authFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -1032,7 +1033,7 @@ class __$RegisterStateCopyWithImpl<$Res>
       authFailureOrSuccessOption: authFailureOrSuccessOption == freezed
           ? _value.authFailureOrSuccessOption
           : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthFailure, Unit>>,
+              as Option<Either<RegisterFailure, Unit>>,
     ));
   }
 }
@@ -1062,7 +1063,7 @@ class _$_RegisterState implements _RegisterState {
   @override
   final bool isSubmitting;
   @override
-  final Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption;
+  final Option<Either<RegisterFailure, Unit>> authFailureOrSuccessOption;
 
   @override
   String toString() {
@@ -1117,7 +1118,7 @@ abstract class _RegisterState implements RegisterState {
       required Password password,
       required bool showErrorMessages,
       required bool isSubmitting,
-      required Option<Either<AuthFailure, Unit>>
+      required Option<Either<RegisterFailure, Unit>>
           authFailureOrSuccessOption}) = _$_RegisterState;
 
   @override
@@ -1133,7 +1134,7 @@ abstract class _RegisterState implements RegisterState {
   @override
   bool get isSubmitting;
   @override
-  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption;
+  Option<Either<RegisterFailure, Unit>> get authFailureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
   _$RegisterStateCopyWith<_RegisterState> get copyWith =>
