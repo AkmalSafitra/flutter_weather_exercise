@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_weather_exercise/presentation/sign_in/sig_in_page.dart';
+import 'package:flutter_weather_exercise/presentation/register/register_page.dart';
+import 'package:flutter_weather_exercise/presentation/sign_in/sign_in_page.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -15,6 +16,10 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: SignInPage(),
+      routes: {
+        '/signInPage': (context) => SignInPage(),
+        '/registerPage' : (context) => RegisterPage(),
+      },
     );
   }
 }

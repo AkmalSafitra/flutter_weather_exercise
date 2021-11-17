@@ -55,10 +55,13 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
 
       registerPressed: (e) async* {
 
+
+        final isFirstNameValid = state.firstName.isValid();
+        final isLastNameValid = state.lastName.isValid();
         final isEmailValid = state.emailAddress.isValid();
         final isPasswordValid = state.password.isValid();
 
-        if (isEmailValid && isPasswordValid) {
+        if (isFirstNameValid && isLastNameValid && isEmailValid && isPasswordValid) {
           yield state.copyWith(
             isSubmitting: true,
             authFailureOrSuccessOption: none(),
@@ -82,6 +85,16 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
           showErrorMessages: true,
         );
       },
+
+      goToSignInPressed: (e)async*{
+
+
+        yield state.copyWith(
+          isSubmitting: true,
+          authFailureOrSuccessOption: none(),
+          showErrorMessages: true,
+        );
+      }
 
     );
   }

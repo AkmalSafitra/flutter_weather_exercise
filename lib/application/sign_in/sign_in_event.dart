@@ -6,6 +6,6 @@ abstract class SignInEvent with _$SignInEvent{
   const factory SignInEvent.passwordChanged(String passwordStr) = PasswordChanged;
 
   const factory SignInEvent.signInPressed() = SignInPressed;
-  const factory SignInEvent.registerNewAccountPressed() = RegisterNewAccountPressed;
+  // const factory SignInEvent.registerNewAccountPressed() = RegisterNewAccountPressed;
 
 }

@@ -69,12 +69,16 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         );
       },
 
-      registerNewAccountPressed: (e) async* {
-        yield state.copyWith(
-          isSubmitting: true,
-          showErrorMessages: true,
-        );
-      }
+      // registerNewAccountPressed: (e) async* {
+      //
+      //   final failureOrSuccess = await signInFacade.goToRegister();
+      //
+      //   yield state.copyWith(
+      //     isSubmitting: true,
+      //     authFailureOrSuccessOption: none(),
+      //     showErrorMessages: true,
+      //   );
+      // }
 
     );
   }

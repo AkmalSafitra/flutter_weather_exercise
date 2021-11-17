@@ -39,7 +39,7 @@ class RegisterForm extends StatelessWidget {
               const SizedBox(height: 8),
               TextFormField(
                 decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.email),
+                  prefixIcon: Icon(Icons.account_box_rounded),
                   labelText: 'First Name',
                 ),
                 autocorrect: false,
@@ -62,7 +62,7 @@ class RegisterForm extends StatelessWidget {
               const SizedBox(height: 8),
               TextFormField(
                 decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.email),
+                  prefixIcon: Icon(Icons.account_box_rounded),
                   labelText: 'Last Name',
                 ),
                 autocorrect: false,
@@ -126,19 +126,22 @@ class RegisterForm extends StatelessWidget {
                     ),
               ),
 
-              Row(
-                children: [
-                  Expanded(
-                    child: TextButton(
-                      child: const Text('REGISTER'),
-                      onPressed: () {
-                        context.read<RegisterBloc>().add(
-                          const RegisterEvent.registerPressed(),
-                        );
-                      },
-                    ),
-                  ),
-                ],
+              ElevatedButton(
+                child: const Text('REGISTER'),
+                onPressed: () {
+                  context.read<RegisterBloc>().add(
+                    const RegisterEvent.registerPressed(),
+                  );
+                },
+              ),
+
+              TextButton(
+                child: const Text('GO TO SIGN IN'),
+                onPressed: () {
+                  context.read<RegisterBloc>().add(
+                    const RegisterEvent.goToSignInPressed(),
+                  );
+                },
               ),
 
             ],

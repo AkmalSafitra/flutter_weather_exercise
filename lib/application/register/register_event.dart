@@ -8,5 +8,6 @@ abstract class RegisterEvent with _$RegisterEvent{
   const factory RegisterEvent.passwordChanged(String passwordStr) = PasswordChanged;
 
   const factory RegisterEvent.registerPressed() = RegisterPressed;
+  const factory RegisterEvent.goToSignInPressed() = GoToSignInPressed;
 
 }

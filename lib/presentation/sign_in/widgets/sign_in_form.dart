@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_weather_exercise/application/sign_in/sign_in_bloc.dart';
+import 'package:flutter_weather_exercise/presentation/register/register_page.dart';
 
 class SignInForm extends StatelessWidget {
   @override
@@ -8,9 +9,9 @@ class SignInForm extends StatelessWidget {
     return BlocConsumer<SignInBloc, SignInState>(
       listener: (context, state) {
         state.authFailureOrSuccessOption.fold(
-              () {},
-              (either) => either.fold(
-                (failure) => {
+          () {},
+          (either) => either.fold(
+            (failure) => {
               // FlushbarHelper.createError(
               //   message: failure.map(
               //     cancelledByUser: (_) => 'Cancelled',
@@ -20,8 +21,8 @@ class SignInForm extends StatelessWidget {
               //   ),
               // ).show(context),
             },
-                (_) {
-              // TODO: Navigate
+            (_) {
+              // ExtendedNavigator.of(context).replace(Routes.notesOverviewPage);
             },
           ),
         );
@@ -46,18 +47,14 @@ class SignInForm extends StatelessWidget {
                 onChanged: (value) => context
                     .read<SignInBloc>()
                     .add(SignInEvent.emailChanged(value)),
-                validator: (_) => context
-                    .read<SignInBloc>()
-                    .state
-                    .emailAddress
-                    .value
-                    .fold(
-                      (f) => f.maybeMap(
-                    invalidEmail: (_) => 'Invalid Email',
-                    orElse: () => null,
-                  ),
-                      (_) => null,
-                ),
+                validator: (_) =>
+                    context.read<SignInBloc>().state.emailAddress.value.fold(
+                          (f) => f.maybeMap(
+                            invalidEmail: (_) => 'Invalid Email',
+                            orElse: () => null,
+                          ),
+                          (_) => null,
+                        ),
               ),
               const SizedBox(height: 8),
               TextFormField(
@@ -73,37 +70,31 @@ class SignInForm extends StatelessWidget {
                 validator: (_) =>
                     context.read<SignInBloc>().state.password.value.fold(
                           (f) => f.maybeMap(
-                        shortPassword: (_) => 'Short Password',
-                        orElse: () => null,
-                      ),
+                            shortPassword: (_) => 'Short Password',
+                            orElse: () => null,
+                          ),
                           (_) => null,
-                    ),
+                        ),
               ),
-              Row(
-                children: [
-                  Expanded(
-                    child: TextButton(
-                      child: const Text('SIGN IN'),
-                      onPressed: () {
-                        context.read<SignInBloc>().add(
-                          const SignInEvent
-                              .signInPressed(),
-                        );
-                      },
-                    ),
-                  ),
-                  Expanded(
-                    child: TextButton(
-                      child: const Text('REGISTER NEW ACCOUNT'),
-                      onPressed: () {
-                        context.read<SignInBloc>().add(
-                          const SignInEvent
-                              .registerNewAccountPressed(),
-                        );
-                      },
-                    ),
-                  ),
-                ],
+
+              ElevatedButton(
+                child: const Text('SIGN IN'),
+                onPressed: () {
+                  context.read<SignInBloc>().add(
+                        const SignInEvent.signInPressed(),
+                      );
+                },
+              ),
+
+              TextButton(
+                child: const Text('REGISTER NEW ACCOUNT'),
+                onPressed: () {
+                  Navigator.of(context).pushReplacementNamed(RegisterPage.routeName);
+                  // Navigator.of(context).pushNamed(route)
+                  // context.read<SignInBloc>().add(
+                  //       const SignInEvent.registerNewAccountPressed(),
+                  //     );
+                },
               ),
 
             ],

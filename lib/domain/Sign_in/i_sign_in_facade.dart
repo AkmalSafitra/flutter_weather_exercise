@@ -10,4 +10,6 @@ abstract class ISignInFacade{
     required Password password,
   });
 
+  // Future<Either<SignInFailure, Unit>> goToRegister();
+
 }

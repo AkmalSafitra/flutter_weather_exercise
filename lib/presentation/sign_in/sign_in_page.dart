@@ -7,6 +7,7 @@ import 'package:flutter_weather_exercise/presentation/sign_in/widgets/sign_in_fo
 
 
 class SignInPage extends StatelessWidget {
+  static const routeName = '/signInPage';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
