@@ -55,7 +55,6 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
 
       registerPressed: (e) async* {
 
-
         final isFirstNameValid = state.firstName.isValid();
         final isLastNameValid = state.lastName.isValid();
         final isEmailValid = state.emailAddress.isValid();

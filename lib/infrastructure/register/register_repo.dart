@@ -24,17 +24,13 @@ class SqlRegisterFacade implements IRegisterFacade {
     final lastNameStr = lastName.getOrCrash();
     final emailAddressStr = emailAddress.getOrCrash();
     final passwordStr = password.getOrCrash();
-
     try {
-      // _firebaseAuth.createUserWithEmailAndPassword(
-      //   email: emailAddressStr,
-      //   password: passwordStr,
-      // );
 
       User user = User(firstNameStr, lastNameStr, emailAddressStr, passwordStr);
-      Hive.box('users').add(user);
-
+      final userBox = Hive.box('users');
+      userBox.add(user);
       return right(unit);
+
     } on PlatformException catch (e) {
       if (e.code == 'email-already-in-use') {
         return left(const RegisterFailure.emailAlreadyInUse());

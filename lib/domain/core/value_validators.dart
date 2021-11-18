@@ -6,7 +6,7 @@ import 'failures.dart';
 
 Either<ValueFailure<String>, String> validateFirstName(String input) {
 
-  if (input.length >= 6) {
+  if (input.isNotEmpty) {
     return right(input);
   } else {
     return left(ValueFailure.invalidFirstName(failedValue: input));
@@ -15,7 +15,7 @@ Either<ValueFailure<String>, String> validateFirstName(String input) {
 }
 
 Either<ValueFailure<String>, String> validateLastName(String input) {
-  if (input.length >= 6) {
+  if (input.isNotEmpty) {
     return right(input);
   } else {
     return left(ValueFailure.invalidLastName(failedValue: input));

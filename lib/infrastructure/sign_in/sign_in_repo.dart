@@ -21,33 +21,27 @@ class SqlSignInFacade implements ISignInFacade {
     final emailAddressStr = emailAddress.getOrCrash();
     final passwordStr = password.getOrCrash();
 
-    try {
-      // _firebaseAuth.createUserWithEmailAndPassword(
-      //   email: emailAddressStr,
-      //   password: passwordStr,
-      // );
-
       List _userList = <User>[];
       List _signInUser = <User>[];
-      Hive.openBox("users");
+
+      await Hive.openBox("users");
       var userBox = Hive.box("users");
       _userList = userBox.values.toList();
-
+      print(_userList.first.toString());
       _signInUser = _userList.where((e) => e.emailAddress == emailAddressStr && e.password == passwordStr ).toList();
+      print(_signInUser);
 
       if(_signInUser.isNotEmpty){
-        Hive.openBox("login");
-        Hive.box('login').add(_signInUser);
+        await Hive.openBox("login");
+        Hive.box("login").put(0, _signInUser);
+        print('save signin' + Hive.box("login").values.length.toString());
+        return right(unit);
+
+      }else{
+        print('signin failed1');
+        return left(const SignInFailure.invalidEmailAndPasswordCombination());
       }
 
-      return right(unit);
-    } on PlatformException catch (e) {
-      if (e.code == 'email-already-in-use') {
-        return left(const SignInFailure.invalidEmailAndPasswordCombination());
-      } else {
-        return left(const SignInFailure.invalidEmailAndPasswordCombination());
-      }
-    }
   }
 
   @override
@@ -73,9 +67,12 @@ class SqlSignInFacade implements ISignInFacade {
       if(_signInUser.isNotEmpty){
         Hive.openBox("login");
         Hive.box('login').add(_signInUser);
+        return right(unit);
+      }else{
+        return left(const SignInFailure.invalidEmailAndPasswordCombination());
       }
 
-      return right(unit);
+
     } on PlatformException catch (e) {
       if (e.code == 'email-already-in-use') {
         return left(const SignInFailure.invalidEmailAndPasswordCombination());
