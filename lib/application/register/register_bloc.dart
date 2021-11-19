@@ -85,15 +85,36 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
         );
       },
 
-      goToSignInPressed: (e)async*{
+      editProfilePressed: (e) async* {
 
+        final isFirstNameValid = state.firstName.isValid();
+        final isLastNameValid = state.lastName.isValid();
+        final isEmailValid = state.emailAddress.isValid();
+
+        if (isFirstNameValid && isLastNameValid && isEmailValid) {
+          yield state.copyWith(
+            isSubmitting: true,
+            authFailureOrSuccessOption: none(),
+          );
+
+          final failureOrSuccess = await registerFacade.editProfile(
+            firstName: state.firstName,
+            lastName: state.lastName,
+            emailAddress: state.emailAddress,
+          );
+
+          yield state.copyWith(
+            isSubmitting: false,
+            authFailureOrSuccessOption: some(failureOrSuccess),
+          );
+        }
 
         yield state.copyWith(
-          isSubmitting: true,
-          authFailureOrSuccessOption: none(),
+          isSubmitting: false,
           showErrorMessages: true,
         );
-      }
+      },
+
 
     );
   }

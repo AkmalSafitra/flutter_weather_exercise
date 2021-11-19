@@ -10,4 +10,10 @@ abstract class IRegisterFacade{
     required Password password,
   });
 
+  Future<Either<RegisterFailure, Unit>> editProfile({
+    required FirstName firstName,
+    required LastName lastName,
+    required EmailAddress emailAddress,
+  });
+
 }

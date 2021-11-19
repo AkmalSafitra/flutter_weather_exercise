@@ -45,8 +45,8 @@ class _$RegisterEventTearOff {
     return const RegisterPressed();
   }
 
-  GoToSignInPressed goToSignInPressed() {
-    return const GoToSignInPressed();
+  EditProfilePressed editProfilePressed() {
+    return const EditProfilePressed();
   }
 }
 
@@ -62,7 +62,7 @@ mixin _$RegisterEvent {
     required TResult Function(String emailStr) emailChanged,
     required TResult Function(String passwordStr) passwordChanged,
     required TResult Function() registerPressed,
-    required TResult Function() goToSignInPressed,
+    required TResult Function() editProfilePressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -72,7 +72,7 @@ mixin _$RegisterEvent {
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? registerPressed,
-    TResult Function()? goToSignInPressed,
+    TResult Function()? editProfilePressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -82,7 +82,7 @@ mixin _$RegisterEvent {
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? registerPressed,
-    TResult Function()? goToSignInPressed,
+    TResult Function()? editProfilePressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -93,7 +93,7 @@ mixin _$RegisterEvent {
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(PasswordChanged value) passwordChanged,
     required TResult Function(RegisterPressed value) registerPressed,
-    required TResult Function(GoToSignInPressed value) goToSignInPressed,
+    required TResult Function(EditProfilePressed value) editProfilePressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -103,7 +103,7 @@ mixin _$RegisterEvent {
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
     TResult Function(RegisterPressed value)? registerPressed,
-    TResult Function(GoToSignInPressed value)? goToSignInPressed,
+    TResult Function(EditProfilePressed value)? editProfilePressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -113,7 +113,7 @@ mixin _$RegisterEvent {
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
     TResult Function(RegisterPressed value)? registerPressed,
-    TResult Function(GoToSignInPressed value)? goToSignInPressed,
+    TResult Function(EditProfilePressed value)? editProfilePressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -206,7 +206,7 @@ class _$FirstNameChanged implements FirstNameChanged {
     required TResult Function(String emailStr) emailChanged,
     required TResult Function(String passwordStr) passwordChanged,
     required TResult Function() registerPressed,
-    required TResult Function() goToSignInPressed,
+    required TResult Function() editProfilePressed,
   }) {
     return firstNameChanged(firstNameStr);
   }
@@ -219,7 +219,7 @@ class _$FirstNameChanged implements FirstNameChanged {
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? registerPressed,
-    TResult Function()? goToSignInPressed,
+    TResult Function()? editProfilePressed,
   }) {
     return firstNameChanged?.call(firstNameStr);
   }
@@ -232,7 +232,7 @@ class _$FirstNameChanged implements FirstNameChanged {
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? registerPressed,
-    TResult Function()? goToSignInPressed,
+    TResult Function()? editProfilePressed,
     required TResult orElse(),
   }) {
     if (firstNameChanged != null) {
@@ -249,7 +249,7 @@ class _$FirstNameChanged implements FirstNameChanged {
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(PasswordChanged value) passwordChanged,
     required TResult Function(RegisterPressed value) registerPressed,
-    required TResult Function(GoToSignInPressed value) goToSignInPressed,
+    required TResult Function(EditProfilePressed value) editProfilePressed,
   }) {
     return firstNameChanged(this);
   }
@@ -262,7 +262,7 @@ class _$FirstNameChanged implements FirstNameChanged {
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
     TResult Function(RegisterPressed value)? registerPressed,
-    TResult Function(GoToSignInPressed value)? goToSignInPressed,
+    TResult Function(EditProfilePressed value)? editProfilePressed,
   }) {
     return firstNameChanged?.call(this);
   }
@@ -275,7 +275,7 @@ class _$FirstNameChanged implements FirstNameChanged {
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
     TResult Function(RegisterPressed value)? registerPressed,
-    TResult Function(GoToSignInPressed value)? goToSignInPressed,
+    TResult Function(EditProfilePressed value)? editProfilePressed,
     required TResult orElse(),
   }) {
     if (firstNameChanged != null) {
@@ -364,7 +364,7 @@ class _$LastNameChanged implements LastNameChanged {
     required TResult Function(String emailStr) emailChanged,
     required TResult Function(String passwordStr) passwordChanged,
     required TResult Function() registerPressed,
-    required TResult Function() goToSignInPressed,
+    required TResult Function() editProfilePressed,
   }) {
     return lastNameChanged(lastNameStr);
   }
@@ -377,7 +377,7 @@ class _$LastNameChanged implements LastNameChanged {
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? registerPressed,
-    TResult Function()? goToSignInPressed,
+    TResult Function()? editProfilePressed,
   }) {
     return lastNameChanged?.call(lastNameStr);
   }
@@ -390,7 +390,7 @@ class _$LastNameChanged implements LastNameChanged {
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? registerPressed,
-    TResult Function()? goToSignInPressed,
+    TResult Function()? editProfilePressed,
     required TResult orElse(),
   }) {
     if (lastNameChanged != null) {
@@ -407,7 +407,7 @@ class _$LastNameChanged implements LastNameChanged {
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(PasswordChanged value) passwordChanged,
     required TResult Function(RegisterPressed value) registerPressed,
-    required TResult Function(GoToSignInPressed value) goToSignInPressed,
+    required TResult Function(EditProfilePressed value) editProfilePressed,
   }) {
     return lastNameChanged(this);
   }
@@ -420,7 +420,7 @@ class _$LastNameChanged implements LastNameChanged {
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
     TResult Function(RegisterPressed value)? registerPressed,
-    TResult Function(GoToSignInPressed value)? goToSignInPressed,
+    TResult Function(EditProfilePressed value)? editProfilePressed,
   }) {
     return lastNameChanged?.call(this);
   }
@@ -433,7 +433,7 @@ class _$LastNameChanged implements LastNameChanged {
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
     TResult Function(RegisterPressed value)? registerPressed,
-    TResult Function(GoToSignInPressed value)? goToSignInPressed,
+    TResult Function(EditProfilePressed value)? editProfilePressed,
     required TResult orElse(),
   }) {
     if (lastNameChanged != null) {
@@ -521,7 +521,7 @@ class _$EmailChanged implements EmailChanged {
     required TResult Function(String emailStr) emailChanged,
     required TResult Function(String passwordStr) passwordChanged,
     required TResult Function() registerPressed,
-    required TResult Function() goToSignInPressed,
+    required TResult Function() editProfilePressed,
   }) {
     return emailChanged(emailStr);
   }
@@ -534,7 +534,7 @@ class _$EmailChanged implements EmailChanged {
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? registerPressed,
-    TResult Function()? goToSignInPressed,
+    TResult Function()? editProfilePressed,
   }) {
     return emailChanged?.call(emailStr);
   }
@@ -547,7 +547,7 @@ class _$EmailChanged implements EmailChanged {
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? registerPressed,
-    TResult Function()? goToSignInPressed,
+    TResult Function()? editProfilePressed,
     required TResult orElse(),
   }) {
     if (emailChanged != null) {
@@ -564,7 +564,7 @@ class _$EmailChanged implements EmailChanged {
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(PasswordChanged value) passwordChanged,
     required TResult Function(RegisterPressed value) registerPressed,
-    required TResult Function(GoToSignInPressed value) goToSignInPressed,
+    required TResult Function(EditProfilePressed value) editProfilePressed,
   }) {
     return emailChanged(this);
   }
@@ -577,7 +577,7 @@ class _$EmailChanged implements EmailChanged {
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
     TResult Function(RegisterPressed value)? registerPressed,
-    TResult Function(GoToSignInPressed value)? goToSignInPressed,
+    TResult Function(EditProfilePressed value)? editProfilePressed,
   }) {
     return emailChanged?.call(this);
   }
@@ -590,7 +590,7 @@ class _$EmailChanged implements EmailChanged {
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
     TResult Function(RegisterPressed value)? registerPressed,
-    TResult Function(GoToSignInPressed value)? goToSignInPressed,
+    TResult Function(EditProfilePressed value)? editProfilePressed,
     required TResult orElse(),
   }) {
     if (emailChanged != null) {
@@ -679,7 +679,7 @@ class _$PasswordChanged implements PasswordChanged {
     required TResult Function(String emailStr) emailChanged,
     required TResult Function(String passwordStr) passwordChanged,
     required TResult Function() registerPressed,
-    required TResult Function() goToSignInPressed,
+    required TResult Function() editProfilePressed,
   }) {
     return passwordChanged(passwordStr);
   }
@@ -692,7 +692,7 @@ class _$PasswordChanged implements PasswordChanged {
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? registerPressed,
-    TResult Function()? goToSignInPressed,
+    TResult Function()? editProfilePressed,
   }) {
     return passwordChanged?.call(passwordStr);
   }
@@ -705,7 +705,7 @@ class _$PasswordChanged implements PasswordChanged {
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? registerPressed,
-    TResult Function()? goToSignInPressed,
+    TResult Function()? editProfilePressed,
     required TResult orElse(),
   }) {
     if (passwordChanged != null) {
@@ -722,7 +722,7 @@ class _$PasswordChanged implements PasswordChanged {
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(PasswordChanged value) passwordChanged,
     required TResult Function(RegisterPressed value) registerPressed,
-    required TResult Function(GoToSignInPressed value) goToSignInPressed,
+    required TResult Function(EditProfilePressed value) editProfilePressed,
   }) {
     return passwordChanged(this);
   }
@@ -735,7 +735,7 @@ class _$PasswordChanged implements PasswordChanged {
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
     TResult Function(RegisterPressed value)? registerPressed,
-    TResult Function(GoToSignInPressed value)? goToSignInPressed,
+    TResult Function(EditProfilePressed value)? editProfilePressed,
   }) {
     return passwordChanged?.call(this);
   }
@@ -748,7 +748,7 @@ class _$PasswordChanged implements PasswordChanged {
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
     TResult Function(RegisterPressed value)? registerPressed,
-    TResult Function(GoToSignInPressed value)? goToSignInPressed,
+    TResult Function(EditProfilePressed value)? editProfilePressed,
     required TResult orElse(),
   }) {
     if (passwordChanged != null) {
@@ -813,7 +813,7 @@ class _$RegisterPressed implements RegisterPressed {
     required TResult Function(String emailStr) emailChanged,
     required TResult Function(String passwordStr) passwordChanged,
     required TResult Function() registerPressed,
-    required TResult Function() goToSignInPressed,
+    required TResult Function() editProfilePressed,
   }) {
     return registerPressed();
   }
@@ -826,7 +826,7 @@ class _$RegisterPressed implements RegisterPressed {
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? registerPressed,
-    TResult Function()? goToSignInPressed,
+    TResult Function()? editProfilePressed,
   }) {
     return registerPressed?.call();
   }
@@ -839,7 +839,7 @@ class _$RegisterPressed implements RegisterPressed {
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? registerPressed,
-    TResult Function()? goToSignInPressed,
+    TResult Function()? editProfilePressed,
     required TResult orElse(),
   }) {
     if (registerPressed != null) {
@@ -856,7 +856,7 @@ class _$RegisterPressed implements RegisterPressed {
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(PasswordChanged value) passwordChanged,
     required TResult Function(RegisterPressed value) registerPressed,
-    required TResult Function(GoToSignInPressed value) goToSignInPressed,
+    required TResult Function(EditProfilePressed value) editProfilePressed,
   }) {
     return registerPressed(this);
   }
@@ -869,7 +869,7 @@ class _$RegisterPressed implements RegisterPressed {
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
     TResult Function(RegisterPressed value)? registerPressed,
-    TResult Function(GoToSignInPressed value)? goToSignInPressed,
+    TResult Function(EditProfilePressed value)? editProfilePressed,
   }) {
     return registerPressed?.call(this);
   }
@@ -882,7 +882,7 @@ class _$RegisterPressed implements RegisterPressed {
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
     TResult Function(RegisterPressed value)? registerPressed,
-    TResult Function(GoToSignInPressed value)? goToSignInPressed,
+    TResult Function(EditProfilePressed value)? editProfilePressed,
     required TResult orElse(),
   }) {
     if (registerPressed != null) {
@@ -897,38 +897,38 @@ abstract class RegisterPressed implements RegisterEvent {
 }
 
 /// @nodoc
-abstract class $GoToSignInPressedCopyWith<$Res> {
-  factory $GoToSignInPressedCopyWith(
-          GoToSignInPressed value, $Res Function(GoToSignInPressed) then) =
-      _$GoToSignInPressedCopyWithImpl<$Res>;
+abstract class $EditProfilePressedCopyWith<$Res> {
+  factory $EditProfilePressedCopyWith(
+          EditProfilePressed value, $Res Function(EditProfilePressed) then) =
+      _$EditProfilePressedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$GoToSignInPressedCopyWithImpl<$Res>
+class _$EditProfilePressedCopyWithImpl<$Res>
     extends _$RegisterEventCopyWithImpl<$Res>
-    implements $GoToSignInPressedCopyWith<$Res> {
-  _$GoToSignInPressedCopyWithImpl(
-      GoToSignInPressed _value, $Res Function(GoToSignInPressed) _then)
-      : super(_value, (v) => _then(v as GoToSignInPressed));
+    implements $EditProfilePressedCopyWith<$Res> {
+  _$EditProfilePressedCopyWithImpl(
+      EditProfilePressed _value, $Res Function(EditProfilePressed) _then)
+      : super(_value, (v) => _then(v as EditProfilePressed));
 
   @override
-  GoToSignInPressed get _value => super._value as GoToSignInPressed;
+  EditProfilePressed get _value => super._value as EditProfilePressed;
 }
 
 /// @nodoc
 
-class _$GoToSignInPressed implements GoToSignInPressed {
-  const _$GoToSignInPressed();
+class _$EditProfilePressed implements EditProfilePressed {
+  const _$EditProfilePressed();
 
   @override
   String toString() {
-    return 'RegisterEvent.goToSignInPressed()';
+    return 'RegisterEvent.editProfilePressed()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is GoToSignInPressed);
+        (other.runtimeType == runtimeType && other is EditProfilePressed);
   }
 
   @override
@@ -942,9 +942,9 @@ class _$GoToSignInPressed implements GoToSignInPressed {
     required TResult Function(String emailStr) emailChanged,
     required TResult Function(String passwordStr) passwordChanged,
     required TResult Function() registerPressed,
-    required TResult Function() goToSignInPressed,
+    required TResult Function() editProfilePressed,
   }) {
-    return goToSignInPressed();
+    return editProfilePressed();
   }
 
   @override
@@ -955,9 +955,9 @@ class _$GoToSignInPressed implements GoToSignInPressed {
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? registerPressed,
-    TResult Function()? goToSignInPressed,
+    TResult Function()? editProfilePressed,
   }) {
-    return goToSignInPressed?.call();
+    return editProfilePressed?.call();
   }
 
   @override
@@ -968,11 +968,11 @@ class _$GoToSignInPressed implements GoToSignInPressed {
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? registerPressed,
-    TResult Function()? goToSignInPressed,
+    TResult Function()? editProfilePressed,
     required TResult orElse(),
   }) {
-    if (goToSignInPressed != null) {
-      return goToSignInPressed();
+    if (editProfilePressed != null) {
+      return editProfilePressed();
     }
     return orElse();
   }
@@ -985,9 +985,9 @@ class _$GoToSignInPressed implements GoToSignInPressed {
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(PasswordChanged value) passwordChanged,
     required TResult Function(RegisterPressed value) registerPressed,
-    required TResult Function(GoToSignInPressed value) goToSignInPressed,
+    required TResult Function(EditProfilePressed value) editProfilePressed,
   }) {
-    return goToSignInPressed(this);
+    return editProfilePressed(this);
   }
 
   @override
@@ -998,9 +998,9 @@ class _$GoToSignInPressed implements GoToSignInPressed {
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
     TResult Function(RegisterPressed value)? registerPressed,
-    TResult Function(GoToSignInPressed value)? goToSignInPressed,
+    TResult Function(EditProfilePressed value)? editProfilePressed,
   }) {
-    return goToSignInPressed?.call(this);
+    return editProfilePressed?.call(this);
   }
 
   @override
@@ -1011,18 +1011,18 @@ class _$GoToSignInPressed implements GoToSignInPressed {
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
     TResult Function(RegisterPressed value)? registerPressed,
-    TResult Function(GoToSignInPressed value)? goToSignInPressed,
+    TResult Function(EditProfilePressed value)? editProfilePressed,
     required TResult orElse(),
   }) {
-    if (goToSignInPressed != null) {
-      return goToSignInPressed(this);
+    if (editProfilePressed != null) {
+      return editProfilePressed(this);
     }
     return orElse();
   }
 }
 
-abstract class GoToSignInPressed implements RegisterEvent {
-  const factory GoToSignInPressed() = _$GoToSignInPressed;
+abstract class EditProfilePressed implements RegisterEvent {
+  const factory EditProfilePressed() = _$EditProfilePressed;
 }
 
 /// @nodoc
