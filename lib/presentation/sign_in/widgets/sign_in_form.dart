@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_weather_exercise/application/sign_in/sign_in_bloc.dart';
 import 'package:flutter_weather_exercise/presentation/register/register_page.dart';
 import 'package:flutter_weather_exercise/presentation/routes/router.gr.dart';
+import 'package:another_flushbar/flushbar.dart';
 
 class SignInForm extends StatelessWidget {
   @override
@@ -15,6 +16,13 @@ class SignInForm extends StatelessWidget {
           (either) => either.fold(
             (failure) => {
               // display error snackBar
+              Flushbar(
+                message: failure.map(
+                  invalidEmailAndPasswordCombination: (_) =>
+                      'Invalid Email and Password Combination',
+                ),
+                duration: Duration(seconds: 3),
+              ).show(context),
             },
             (_) {
               context.replaceRoute(const HomeRoute());
@@ -73,7 +81,6 @@ class SignInForm extends StatelessWidget {
                             (_) => null,
                           ),
                 ),
-
                 ElevatedButton(
                   child: const Text('SIGN IN'),
                   onPressed: () {
@@ -82,14 +89,12 @@ class SignInForm extends StatelessWidget {
                         );
                   },
                 ),
-
                 TextButton(
                   child: const Text('REGISTER NEW ACCOUNT'),
                   onPressed: () {
                     context.replaceRoute(const RegisterRoute());
                   },
                 ),
-
               ],
             ),
           ),

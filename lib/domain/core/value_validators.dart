@@ -5,12 +5,10 @@ import 'package:dartz/dartz.dart';
 import 'failures.dart';
 
 Either<ValueFailure<String>, String> validateFirstName(String input) {
-
   if (input.isNotEmpty) {
     return right(input);
   } else {
     return left(ValueFailure.invalidFirstName(failedValue: input));
-    // throw InvalidEmailFailure(failedValue: input);
   }
 }
 
@@ -19,7 +17,14 @@ Either<ValueFailure<String>, String> validateLastName(String input) {
     return right(input);
   } else {
     return left(ValueFailure.invalidLastName(failedValue: input));
-    // throw InvalidEmailFailure(failedValue: input);
+  }
+}
+
+Either<ValueFailure<String>, String> validateNotEmpty(String input) {
+  if (input.isNotEmpty) {
+    return right(input);
+  } else {
+    return left(ValueFailure.empty(failedValue: input));
   }
 }
 
@@ -30,7 +35,6 @@ Either<ValueFailure<String>, String> validateEmailAddress(String input) {
     return right(input);
   } else {
     return left(ValueFailure.invalidEmail(failedValue: input));
-    // throw InvalidEmailFailure(failedValue: input);
   }
 }
 
@@ -39,7 +43,6 @@ Either<ValueFailure<String>, String> validatePassword(String input) {
     return right(input);
   } else {
     return left(ValueFailure.shortPassword(failedValue: input));
-    // throw InvalidEmailFailure(failedValue: input);
   }
 }
 
@@ -57,7 +60,7 @@ Either<ValueFailure<String>, String> validateMaxStringLength(
 }
 
 Either<ValueFailure<String>, String> validateStringNotEmpty(String input) {
-  if (input.isNotEmpty) {
+  if (input.length > 1) {
     return right(input);
   } else {
     return left(ValueFailure.empty(failedValue: input));

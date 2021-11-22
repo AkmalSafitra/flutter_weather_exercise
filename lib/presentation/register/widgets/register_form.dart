@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:auto_route/src/router/auto_router_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,9 +20,16 @@ class RegisterForm extends StatelessWidget {
           (either) => either.fold(
             (failure) => {
               // display error snackBar
+              Flushbar(
+                message: failure.map(
+                  emailAlreadyInUse: (_) => 'Email already in use',
+                ),
+                duration: Duration(seconds: 3),
+              ).show(context),
             },
             (_) {
-              final snackBar = SnackBar(content: Text('User Successfully Created'));
+              final snackBar =
+                  SnackBar(content: Text('User Successfully Created'));
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
               _controllerFirstName.clear();
               _controllerLastName.clear();
@@ -65,7 +73,7 @@ class RegisterForm extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 TextFormField(
-                    controller: _controllerLastName,
+                  controller: _controllerLastName,
                   decoration: const InputDecoration(
                     prefixIcon: Icon(Icons.account_box_rounded),
                     labelText: 'Last Name',
@@ -85,7 +93,7 @@ class RegisterForm extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 TextFormField(
-                    controller: _controllerEmailAddress,
+                  controller: _controllerEmailAddress,
                   decoration: const InputDecoration(
                     prefixIcon: Icon(Icons.email),
                     labelText: 'Email',
@@ -94,14 +102,18 @@ class RegisterForm extends StatelessWidget {
                   onChanged: (value) => context
                       .read<RegisterBloc>()
                       .add(RegisterEvent.emailChanged(value)),
-                  validator: (_) =>
-                      context.read<RegisterBloc>().state.emailAddress.value.fold(
-                            (f) => f.maybeMap(
-                              invalidEmail: (_) => 'Invalid Email',
-                              orElse: () => null,
-                            ),
-                            (_) => null,
-                          ),
+                  validator: (_) => context
+                      .read<RegisterBloc>()
+                      .state
+                      .emailAddress
+                      .value
+                      .fold(
+                        (f) => f.maybeMap(
+                          invalidEmail: (_) => 'Invalid Email',
+                          orElse: () => null,
+                        ),
+                        (_) => null,
+                      ),
                 ),
                 const SizedBox(height: 8),
                 TextFormField(

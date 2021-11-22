@@ -25,7 +25,7 @@ class _$ValueFailureTearOff {
     );
   }
 
-  Empty<T> empty<T>({required T failedValue}) {
+  Empty<T> empty<T>({required String failedValue}) {
     return Empty<T>(
       failedValue: failedValue,
     );
@@ -64,7 +64,7 @@ mixin _$ValueFailure<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T failedValue, int max) exceedingLength,
-    required TResult Function(T failedValue) empty,
+    required TResult Function(String failedValue) empty,
     required TResult Function(String failedValue) invalidFirstName,
     required TResult Function(String failedValue) invalidLastName,
     required TResult Function(String failedValue) invalidEmail,
@@ -74,7 +74,7 @@ mixin _$ValueFailure<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(T failedValue, int max)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function(String failedValue)? empty,
     TResult Function(String failedValue)? invalidFirstName,
     TResult Function(String failedValue)? invalidLastName,
     TResult Function(String failedValue)? invalidEmail,
@@ -84,7 +84,7 @@ mixin _$ValueFailure<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T failedValue, int max)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function(String failedValue)? empty,
     TResult Function(String failedValue)? invalidFirstName,
     TResult Function(String failedValue)? invalidLastName,
     TResult Function(String failedValue)? invalidEmail,
@@ -217,7 +217,7 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T failedValue, int max) exceedingLength,
-    required TResult Function(T failedValue) empty,
+    required TResult Function(String failedValue) empty,
     required TResult Function(String failedValue) invalidFirstName,
     required TResult Function(String failedValue) invalidLastName,
     required TResult Function(String failedValue) invalidEmail,
@@ -230,7 +230,7 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(T failedValue, int max)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function(String failedValue)? empty,
     TResult Function(String failedValue)? invalidFirstName,
     TResult Function(String failedValue)? invalidLastName,
     TResult Function(String failedValue)? invalidEmail,
@@ -243,7 +243,7 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T failedValue, int max)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function(String failedValue)? empty,
     TResult Function(String failedValue)? invalidFirstName,
     TResult Function(String failedValue)? invalidLastName,
     TResult Function(String failedValue)? invalidEmail,
@@ -315,7 +315,7 @@ abstract class ExceedingLength<T> implements ValueFailure<T> {
 abstract class $EmptyCopyWith<T, $Res> {
   factory $EmptyCopyWith(Empty<T> value, $Res Function(Empty<T>) then) =
       _$EmptyCopyWithImpl<T, $Res>;
-  $Res call({T failedValue});
+  $Res call({String failedValue});
 }
 
 /// @nodoc
@@ -335,7 +335,7 @@ class _$EmptyCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<T, $Res>
       failedValue: failedValue == freezed
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
-              as T,
+              as String,
     ));
   }
 }
@@ -346,7 +346,7 @@ class _$Empty<T> implements Empty<T> {
   const _$Empty({required this.failedValue});
 
   @override
-  final T failedValue;
+  final String failedValue;
 
   @override
   String toString() {
@@ -358,13 +358,12 @@ class _$Empty<T> implements Empty<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is Empty<T> &&
-            const DeepCollectionEquality()
-                .equals(other.failedValue, failedValue));
+            (identical(other.failedValue, failedValue) ||
+                other.failedValue == failedValue));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(failedValue));
+  int get hashCode => Object.hash(runtimeType, failedValue);
 
   @JsonKey(ignore: true)
   @override
@@ -375,7 +374,7 @@ class _$Empty<T> implements Empty<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T failedValue, int max) exceedingLength,
-    required TResult Function(T failedValue) empty,
+    required TResult Function(String failedValue) empty,
     required TResult Function(String failedValue) invalidFirstName,
     required TResult Function(String failedValue) invalidLastName,
     required TResult Function(String failedValue) invalidEmail,
@@ -388,7 +387,7 @@ class _$Empty<T> implements Empty<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(T failedValue, int max)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function(String failedValue)? empty,
     TResult Function(String failedValue)? invalidFirstName,
     TResult Function(String failedValue)? invalidLastName,
     TResult Function(String failedValue)? invalidEmail,
@@ -401,7 +400,7 @@ class _$Empty<T> implements Empty<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T failedValue, int max)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function(String failedValue)? empty,
     TResult Function(String failedValue)? invalidFirstName,
     TResult Function(String failedValue)? invalidLastName,
     TResult Function(String failedValue)? invalidEmail,
@@ -459,9 +458,9 @@ class _$Empty<T> implements Empty<T> {
 }
 
 abstract class Empty<T> implements ValueFailure<T> {
-  const factory Empty({required T failedValue}) = _$Empty<T>;
+  const factory Empty({required String failedValue}) = _$Empty<T>;
 
-  T get failedValue;
+  String get failedValue;
   @JsonKey(ignore: true)
   $EmptyCopyWith<T, Empty<T>> get copyWith =>
       throw _privateConstructorUsedError;
@@ -533,7 +532,7 @@ class _$InvalidFirstName<T> implements InvalidFirstName<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T failedValue, int max) exceedingLength,
-    required TResult Function(T failedValue) empty,
+    required TResult Function(String failedValue) empty,
     required TResult Function(String failedValue) invalidFirstName,
     required TResult Function(String failedValue) invalidLastName,
     required TResult Function(String failedValue) invalidEmail,
@@ -546,7 +545,7 @@ class _$InvalidFirstName<T> implements InvalidFirstName<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(T failedValue, int max)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function(String failedValue)? empty,
     TResult Function(String failedValue)? invalidFirstName,
     TResult Function(String failedValue)? invalidLastName,
     TResult Function(String failedValue)? invalidEmail,
@@ -559,7 +558,7 @@ class _$InvalidFirstName<T> implements InvalidFirstName<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T failedValue, int max)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function(String failedValue)? empty,
     TResult Function(String failedValue)? invalidFirstName,
     TResult Function(String failedValue)? invalidLastName,
     TResult Function(String failedValue)? invalidEmail,
@@ -692,7 +691,7 @@ class _$InvalidLastName<T> implements InvalidLastName<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T failedValue, int max) exceedingLength,
-    required TResult Function(T failedValue) empty,
+    required TResult Function(String failedValue) empty,
     required TResult Function(String failedValue) invalidFirstName,
     required TResult Function(String failedValue) invalidLastName,
     required TResult Function(String failedValue) invalidEmail,
@@ -705,7 +704,7 @@ class _$InvalidLastName<T> implements InvalidLastName<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(T failedValue, int max)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function(String failedValue)? empty,
     TResult Function(String failedValue)? invalidFirstName,
     TResult Function(String failedValue)? invalidLastName,
     TResult Function(String failedValue)? invalidEmail,
@@ -718,7 +717,7 @@ class _$InvalidLastName<T> implements InvalidLastName<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T failedValue, int max)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function(String failedValue)? empty,
     TResult Function(String failedValue)? invalidFirstName,
     TResult Function(String failedValue)? invalidLastName,
     TResult Function(String failedValue)? invalidEmail,
@@ -851,7 +850,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T failedValue, int max) exceedingLength,
-    required TResult Function(T failedValue) empty,
+    required TResult Function(String failedValue) empty,
     required TResult Function(String failedValue) invalidFirstName,
     required TResult Function(String failedValue) invalidLastName,
     required TResult Function(String failedValue) invalidEmail,
@@ -864,7 +863,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(T failedValue, int max)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function(String failedValue)? empty,
     TResult Function(String failedValue)? invalidFirstName,
     TResult Function(String failedValue)? invalidLastName,
     TResult Function(String failedValue)? invalidEmail,
@@ -877,7 +876,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T failedValue, int max)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function(String failedValue)? empty,
     TResult Function(String failedValue)? invalidFirstName,
     TResult Function(String failedValue)? invalidLastName,
     TResult Function(String failedValue)? invalidEmail,
@@ -1009,7 +1008,7 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T failedValue, int max) exceedingLength,
-    required TResult Function(T failedValue) empty,
+    required TResult Function(String failedValue) empty,
     required TResult Function(String failedValue) invalidFirstName,
     required TResult Function(String failedValue) invalidLastName,
     required TResult Function(String failedValue) invalidEmail,
@@ -1022,7 +1021,7 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(T failedValue, int max)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function(String failedValue)? empty,
     TResult Function(String failedValue)? invalidFirstName,
     TResult Function(String failedValue)? invalidLastName,
     TResult Function(String failedValue)? invalidEmail,
@@ -1035,7 +1034,7 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T failedValue, int max)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function(String failedValue)? empty,
     TResult Function(String failedValue)? invalidFirstName,
     TResult Function(String failedValue)? invalidLastName,
     TResult Function(String failedValue)? invalidEmail,

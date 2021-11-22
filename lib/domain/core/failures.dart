@@ -11,7 +11,7 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
   }) = ExceedingLength<T>;
 
   const factory ValueFailure.empty({
-    required T failedValue,
+    required String failedValue,
   }) = Empty<T>;
 
   const factory ValueFailure.invalidFirstName({
