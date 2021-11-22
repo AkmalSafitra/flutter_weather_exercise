@@ -8,8 +8,9 @@ class WeatherPage extends StatelessWidget {
   static const routeName = '/weatherPage';
 
   var _controllerQuery = TextEditingController();
-  late Map<String, dynamic> weather = {'':''} ;
-  late User usr;
+
+  late Map<String, dynamic> weather = {'':''};
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<WeatherBloc, WeatherState>(
@@ -22,12 +23,11 @@ class WeatherPage extends StatelessWidget {
             },
             (result) {
               final snackBar =
-                  SnackBar(content: Text('User Successfully Created'));
+                  SnackBar(content: Text('Get Weather from Api Success'));
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
               // _controllerFirstName.clear();
               weather = result;
-              print("we s : " + weather.toString());
-              print("we res : " + result.toString());
+              print("weather result : " + weather.toString());
             },
           ),
         );
@@ -67,7 +67,11 @@ class WeatherPage extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: Text("weather.firstName.toString()"),
+                child: BlocBuilder<WeatherBloc, WeatherState>(
+                  builder: (context, state) {
+                    return Text(weather[0].message.toString());
+                  },
+                ),
               ),
             ],
           ),
