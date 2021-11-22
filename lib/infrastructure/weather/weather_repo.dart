@@ -15,7 +15,7 @@ class WeatherFacade implements IWeatherFacade {
   WeatherFacade();
 
   @override
-  Future<Either<WeatherFailure, Map<String, dynamic>>> loadWeather({
+  Future<Either<WeatherFailure, dynamic>> loadWeather({
     required Query query,
   }) async {
     final queryStr = query.getOrCrash();
@@ -26,29 +26,24 @@ class WeatherFacade implements IWeatherFacade {
       };
 
       print("qstr: " + queryStr);
-      Map<String, dynamic> weather = {'':''};
+      Weather? weather;
       final url =
-          ("https://community-open-weather-map.p.rapidapi.com/find?q=$queryStr");
+          ("https://community-open-weather-map.p.rapidapi.com/weather?q=$queryStr");
       await http
           .get(
         Uri.parse(url),
         headers: requestHeaders,
       )
           .then((response) {
-            print("rsp : " + response.body.toString());
+        print("rsp : " + response.body.toString());
 
-        // weather = json.decode(response.body);
-        // Iterable weather = json.decode(response.body);
-        //     Map<String, dynamic> weather = json.decode(response.body);
-        weather = json.decode(response.body);
+        weather = Weather.fromJson(json.decode(response.body));
+        print("we : " + weather!.base.toString());
 
-        print("it : " + weather.toString());
-        // weather = it.map((e) => Weather.fromJson(e)).toList();
+        return right(weather);
       });
 
-      // return weather;
       return right(weather);
-
     } on PlatformException catch (e) {
       if (e.code == 'email-already-in-use') {
         return left(const WeatherFailure.locationNotFound());

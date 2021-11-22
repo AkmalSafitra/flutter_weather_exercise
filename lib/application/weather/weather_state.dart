@@ -6,7 +6,7 @@ abstract class WeatherState with _$WeatherState {
     required Query query,
     required bool showErrorMessages,
     required bool isSubmitting,
-    required Option<Either<WeatherFailure,  Map<String, dynamic>>> authFailureOrSuccessOption,
+    required Option<Either<WeatherFailure, dynamic>> authFailureOrSuccessOption,
   }) = _WeatherState;
 
   factory WeatherState.initial() => WeatherState(

@@ -6,7 +6,7 @@ import 'package:flutter_weather_exercise/domain/Weather/weather_failure.dart';
 
 abstract class IWeatherFacade{
 
-  Future<Either<WeatherFailure, Map<String, dynamic>>> loadWeather({
+  Future<Either<WeatherFailure, dynamic>> loadWeather({
     required Query query,
 });
   Future<Either<WeatherFailure, Unit>> showMessage();

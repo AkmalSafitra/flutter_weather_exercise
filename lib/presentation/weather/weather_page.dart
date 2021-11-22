@@ -1,15 +1,18 @@
+import 'package:auto_route/src/router/auto_router_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_weather_exercise/application/weather/weather_bloc.dart';
 import 'package:flutter_weather_exercise/domain/Weather/weather.dart';
 import 'package:flutter_weather_exercise/domain/user/user_model.dart';
+import 'package:flutter_weather_exercise/presentation/routes/router.gr.dart';
+import 'package:flutter_weather_exercise/presentation/weather/weather_detail_page.dart';
 
 class WeatherPage extends StatelessWidget {
   static const routeName = '/weatherPage';
 
   var _controllerQuery = TextEditingController();
 
-  late Map<String, dynamic> weather = {'':''};
+  Weather? weather;
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +25,8 @@ class WeatherPage extends StatelessWidget {
               // display error snackBar
             },
             (result) {
-              final snackBar =
-                  SnackBar(content: Text('Get Weather from Api Success'));
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
-              // _controllerFirstName.clear();
               weather = result;
-              print("weather result : " + weather.toString());
+              // print("weather result : " + weather.toString());
             },
           ),
         );
@@ -38,6 +37,7 @@ class WeatherPage extends StatelessWidget {
           child: Column(
             children: [
               Expanded(
+                flex: 1,
                 child: TextFormField(
                   controller: _controllerQuery,
                   decoration: InputDecoration(
@@ -67,11 +67,29 @@ class WeatherPage extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: BlocBuilder<WeatherBloc, WeatherState>(
-                  builder: (context, state) {
-                    return Text(weather[0].message.toString());
-                  },
-                ),
+                flex: 8,
+                child: weather?.name.toString() == null
+                    ? const Center(child: Text("Search Weather Location"))
+                    : ListTile(
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 5.0, vertical: 8.0),
+                        leading: Hero(
+                          tag: weather!.weather[0].icon,
+                          child: Image.network(
+                              "http://openweathermap.org/img/wn/${weather!.weather[0].icon}@2x.png",
+                              width: 50),
+                        ),
+
+                        title: Text(weather!.name),
+                        subtitle: Text(weather!.weather[0].description),
+                        onTap: () => context.pushRoute(WeatherDetailRoute(weather: weather as Weather)),
+                        // onTap: (){Navigator.pushNamed(
+                        //   context,
+                        //   WeatherDetailPage.routeName,
+                        //   arguments: weather,
+                        //   );
+                        // },
+                      ),
               ),
             ],
           ),
