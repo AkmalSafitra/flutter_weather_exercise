@@ -23,6 +23,7 @@ class RegisterForm extends StatelessWidget {
               Flushbar(
                 message: failure.map(
                   emailAlreadyInUse: (_) => 'Email already in use',
+                  editNoChanges: (_) => '' ,
                 ),
                 duration: Duration(seconds: 3),
               ).show(context),

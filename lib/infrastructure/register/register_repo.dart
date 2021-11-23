@@ -69,7 +69,15 @@ class SqlRegisterFacade implements IRegisterFacade {
       final signInUser = loginBox.get('login');
       _newUser = _userList.where((e) => e.emailAddress == emailAddressStr).toList();
 
-      if (_newUser.isEmpty) {
+      if (_newUser.isNotEmpty
+          && _newUser[0].firstName == firstNameStr
+          && _newUser[0].lastName == lastNameStr
+          && _newUser[0].emailAddress == emailAddressStr) {
+        // no changes
+        return left(const RegisterFailure.editNoChanges());
+      }
+      else if (_newUser.isEmpty
+          || (_newUser.isNotEmpty && _newUser[0].emailAddress == emailAddressStr)) {
         User user = User(firstNameStr, lastNameStr, emailAddressStr, signInUser.password.toString());
 
         Hive.box('login').put('login', user);
@@ -84,7 +92,8 @@ class SqlRegisterFacade implements IRegisterFacade {
 
         print("is r");
         return right(unit);
-      } else {
+      }
+      else {
         print("is fail");
         return left(const RegisterFailure.emailAlreadyInUse());
       }

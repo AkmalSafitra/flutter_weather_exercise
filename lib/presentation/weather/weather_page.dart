@@ -82,7 +82,7 @@ class WeatherPage extends StatelessWidget {
 
                         title: Text(weather!.name),
                         subtitle: Text(weather!.weather[0].description),
-                        onTap: () => context.pushRoute(WeatherDetailRoute(weather: weather as Weather)),
+                        onTap: () => context.pushRoute(WeatherDetailRoute(weather: weather!)),
                         // onTap: (){Navigator.pushNamed(
                         //   context,
                         //   WeatherDetailPage.routeName,

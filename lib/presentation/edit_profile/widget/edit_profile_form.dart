@@ -15,13 +15,22 @@ class _EditProfileFormState extends State<EditProfileForm> {
   final _controllerLastName = TextEditingController();
   final _controllerEmailAddress = TextEditingController();
   final loginBox = Hive.box('login');
+
   @override
   void initState() {
     User user = loginBox.get('login');
-    if(user != null){
-      _controllerFirstName.text =  user.firstName.toString();
+    if (user != null) {
+      _controllerFirstName.text = user.firstName.toString();
+
       _controllerLastName.text = user.lastName.toString();
       _controllerEmailAddress.text = user.emailAddress.toString();
+
+      context.read<RegisterBloc>()
+          .add(RegisterEvent.firstNameChanged(_controllerFirstName.text));
+      context.read<RegisterBloc>()
+          .add(RegisterEvent.lastNameChanged(_controllerLastName.text));
+      context.read<RegisterBloc>()
+          .add(RegisterEvent.emailChanged(_controllerEmailAddress.text));
     }
 
     super.initState();
@@ -29,9 +38,6 @@ class _EditProfileFormState extends State<EditProfileForm> {
 
   @override
   Widget build(BuildContext context) {
-
-
-
     return BlocConsumer<RegisterBloc, RegisterState>(
       listener: (context, state) {
         state.authFailureOrSuccessOption.fold(
@@ -42,19 +48,20 @@ class _EditProfileFormState extends State<EditProfileForm> {
               Flushbar(
                 message: failure.map(
                   emailAlreadyInUse: (_) => 'Email already in use',
+                  editNoChanges: (_) => 'No Changes',
                 ),
                 duration: Duration(seconds: 3),
               ).show(context),
             },
             (_) {
-              final snackBar = SnackBar(content: Text('Profile Successfully Saved'));
+              final snackBar =
+                  SnackBar(content: Text('Profile Successfully Saved'));
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
             },
           ),
         );
       },
       builder: (context, state) {
-
         return WatchBoxBuilder(
           box: loginBox,
           builder: (context, user) {
@@ -62,12 +69,14 @@ class _EditProfileFormState extends State<EditProfileForm> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Form(
+                  // autovalidateMode: AutovalidateMode.always,
                   autovalidate: state.showErrorMessages,
                   child: Column(
                     children: [
                       const SizedBox(height: 8),
                       TextFormField(
-                        controller: _controllerFirstName,//..text = 'abc',
+                        controller: _controllerFirstName,
+                        //..text = 'abc',
                         // initialValue: user[0].firstName.toString(),
                         decoration: const InputDecoration(
                           prefixIcon: Icon(Icons.account_box_rounded),
@@ -90,9 +99,7 @@ class _EditProfileFormState extends State<EditProfileForm> {
                               (_) => null,
                             ),
                       ),
-
                       const SizedBox(height: 8),
-
                       TextFormField(
                         controller: _controllerLastName,
                         // initialValue: user[0].lastName.toString(),
@@ -117,9 +124,7 @@ class _EditProfileFormState extends State<EditProfileForm> {
                               (_) => null,
                             ),
                       ),
-
                       const SizedBox(height: 8),
-
                       TextFormField(
                         controller: _controllerEmailAddress,
                         // initialValue: user[0].emailAddress.toString(),
@@ -144,9 +149,7 @@ class _EditProfileFormState extends State<EditProfileForm> {
                               (_) => null,
                             ),
                       ),
-
                       SizedBox(height: 18),
-
                       ElevatedButton(
                         child: const Text('Save Profile'),
                         onPressed: () {
@@ -155,7 +158,6 @@ class _EditProfileFormState extends State<EditProfileForm> {
                               );
                         },
                       ),
-
                     ],
                   ),
                 ),
